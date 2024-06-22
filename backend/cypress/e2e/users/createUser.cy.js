@@ -306,7 +306,7 @@ describe("Criar usuário", () => {
 
   it("Não deve ser possivel criar usuário com empresas inválidas", () => {
     let invalidCompanies = [
-      "9",
+      ",",
       "#{{}}}",
       "     ",
       " ",
