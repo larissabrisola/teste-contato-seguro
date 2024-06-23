@@ -1,18 +1,23 @@
 describe('Atualizar informações do usuário', ()=>{
     let id 
+
     before(()=>{
         cy.newUser().then((response)=>{
-            id = response.id.id_user
+            id = response.id_user
         })
     })
 
 
     it('Deve ser possivel atualizar informações do usuário', ()=>{
-        // {
-        //     "name": "string",
-        //     "e-mail": "string",
-        //     "companies": ["string"]
-        // }
+        cy.request({
+            method: "PATCH", 
+            url: "http://localhost:8400/api/user/" + id + "/update", 
+            body: {
+                name: "Hulio", 
+                email: "jay@gmail.com", 
+                companies: ["6"]
+            }
+        })
     })
 
     // Não pude criar outros casos de testes pois não possuo a informação de quais são os campos alteraveis ou se a alteração deve ser realizada simultaneamente
