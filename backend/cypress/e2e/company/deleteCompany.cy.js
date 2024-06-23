@@ -1,6 +1,9 @@
 describe('Deletar empresa', ()=>{
 
-    it('Deve ser possivel deletar empresa', ()=>{
+    before(()=>{
+        // criar empresa
+    })
+    it('Deve ser possivel deletar empresa atraves do ID', ()=>{
         cy.request({
             method: "PATCH", 
             url: "http://localhost:8400/api/company/" + id + "/delete", 

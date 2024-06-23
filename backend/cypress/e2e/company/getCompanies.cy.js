@@ -3,6 +3,10 @@ describe('Listar empresas', ()=>{
     let empresaUm
     let empresaDois  
 
+    before(()=>{
+        // criar empresa
+    })
+    
     // Get All Companies /api/company
 
     it('Deve ser possivel listar todas empresas', ()=>{

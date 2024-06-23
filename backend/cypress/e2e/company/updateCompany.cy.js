@@ -1,5 +1,10 @@
 describe('Atualizar informações de empresas', ()=>{
 
+    before(()=>{
+        // criar empresa
+    })
+
+    
     it('Deve ser possivel atualizar informações da empresa atraves do ID', ()=>{
         cy.request({
             method: "PATCH", 
