@@ -7,7 +7,6 @@ describe('Atualizar informações do usuário', ()=>{
         })
     })
 
-
     it('Deve ser possivel atualizar informações do usuário', ()=>{
         cy.request({
             method: "PATCH", 
@@ -15,8 +14,10 @@ describe('Atualizar informações do usuário', ()=>{
             body: {
                 name: "Hulio", 
                 email: "jay@gmail.com", 
-                companies: ["6"]
+                companies: ["4"]
             }
+        }).then((response)=>{
+            expect(response.status).to.equal(200)
         })
     })
 

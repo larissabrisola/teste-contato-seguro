@@ -259,29 +259,6 @@ describe("Criar usuário", () => {
     });
   });
 
-  // o sistema é quebrado ao realizar esse teste pois a api está permitindo - comentado pois está travando de seguir outros testes - card de bug foi aberto
-  // it('Não deve ser possivel criar usuário com data de nascimento inválida', ()=>{
-  //   let invalidBirth = ["12121", "#{{}}}", "     ", " ", "juremagmailcom", "@", "ç~po"]
-
-  //   invalidBirth.forEach(invalidBirth =>{
-  //     cy.request({
-  //       method: "POST",
-  //       url: "http://localhost:8400/api/user/create",
-  //       body: {
-  //         name: validUser.name,
-  //         email: validUser.email,
-  //         telephone: validUser.telephone,
-  //         birth_date: invalidBirth,
-  //         birth_city: validUser.birth_city,
-  //         companies: validUser.companies,
-  //       } ,       failOnStatusCode: false
-
-  //     }).then((response)=>{
-  //       expect(response.status).to.eq(400)
-  //     })
-  //   })
-  // })
-
   it("Não deve ser possivel criar usuário com cidade inválida", () => {
     let invalidCities = ["12121", "#{{}}}", "     ", " ", "p>,", "@", "ç~po"];
 
@@ -304,6 +281,30 @@ describe("Criar usuário", () => {
     });
   });
 
+    // o sistema é quebrado ao realizar esse teste pois a api está permitindo - comentado pois está travando de seguir outros testes - card de bug foi aberto
+  // it('Não deve ser possivel criar usuário com data de nascimento inválida', ()=>{
+  //   let invalidBirth = ["12121", "#{{}}}", "     ", " ", "juremagmailcom", "@", "ç~po"]
+
+  //   invalidBirth.forEach(invalidBirth =>{
+  //     cy.request({
+  //       method: "POST",
+  //       url: "http://localhost:8400/api/user/create",
+  //       body: {
+  //         name: validUser.name,
+  //         email: validUser.email,
+  //         telephone: validUser.telephone,
+  //         birth_date: invalidBirth,
+  //         birth_city: validUser.birth_city,
+  //         companies: validUser.companies,
+  //       } ,       failOnStatusCode: false
+
+  //     }).then((response)=>{
+  //       expect(response.status).to.eq(400)
+  //     })
+  //   })
+  // })
+
+  // 
   // it("Não deve ser possivel criar usuário com empresas inválidas", () => {
   //   let invalidCompanies = [
   //     ",",
