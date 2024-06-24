@@ -22,26 +22,24 @@ describe('Listar usuários', ()=>{
         })
     })
     
-    // Get All Users
-
-    it('Deve ser possivel listar todos usuários cadastrados', ()=>{
+    it('Deve retornar 200 - Deve ser possivel listar todos usuários cadastrados', ()=>{
         cy.request({
             method: "GET", 
             url: "http://localhost:8400/api/user"
         }).then((response)=>{
             expect(response.body).to.be.an('array')
             expect(response.body[0]).to.have.property('id_user')
-
+            expect(response.status).to.equal(200)
         })
     })
 
-    // Get User by ID 
-
-    it('Deve ser possivel encontrar usuário pelo ID', ()=>{
+    it('Deve retornar 200 - Deve ser possivel encontrar usuário pelo ID', ()=>{
         cy.request({
             method: "GET", 
             url: "http://localhost:8400/api/user/" + id
         }).then((response)=>{
+            expect(response.status).to.equal(200)
+
             expect(response.body.id_user).to.equal(id)
             expect(response.body.name).to.equal(name)
             expect(response.body.email).to.equal(email)
@@ -52,7 +50,7 @@ describe('Listar usuários', ()=>{
         })
     })
 
-    it('Não deve ser possivel encontrar usuário pelo nome', ()=>{
+    it('Deve retornar 400 - Não deve ser possivel encontrar usuário pelo nome', ()=>{
         cy.request({
             method: "GET", 
             url: "http://localhost:8400/api/user/" + name, 
@@ -62,7 +60,7 @@ describe('Listar usuários', ()=>{
         })
     })
 
-    it('Não deve ser possivel encontrar usuário pelo email', ()=>{
+    it('Deve retornar 400 - Não deve ser possivel encontrar usuário pelo email', ()=>{
         cy.request({
             method: "GET", 
             url: "http://localhost:8400/api/user/" + email, 
@@ -72,7 +70,7 @@ describe('Listar usuários', ()=>{
         })
     })
 
-    it('Não deve ser possivel encontrar usuário pela cidade', ()=>{
+    it('Deve retornar 400 - Não deve ser possivel encontrar usuário pela cidade', ()=>{
         cy.request({
             method: "GET", 
             url: "http://localhost:8400/api/user/" + city, 
@@ -82,7 +80,7 @@ describe('Listar usuários', ()=>{
         })
     })
 
-    it('Não deve ser possivel encontrar usuário pela empresa', ()=>{
+    it('Deve retornar 400 - Não deve ser possivel encontrar usuário pela empresa', ()=>{
         cy.request({
             method: "GET", 
             url: "http://localhost:8400/api/user/" + companie, 
@@ -92,13 +90,5 @@ describe('Listar usuários', ()=>{
         })
     })
 
-        // it('Não deve ser possivel encontrar usuário pelo telefone', ()=>{
-    //     cy.request({
-    //         method: "GET", 
-    //         url: "http://localhost:8400/api/user/" + phone, 
-    //         failOnStatusCode: false
-    //     }).then((response)=>{
-    //         expect(response.status).to.equal(400)
-    //     })
-    // })
+
 })

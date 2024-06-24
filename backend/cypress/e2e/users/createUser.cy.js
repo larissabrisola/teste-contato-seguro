@@ -15,7 +15,8 @@ describe("Criar usuário", () => {
   };
 
   //os primeiros dois testes quebram pelo status code incorreto mas a criação do usuário é realizada com sucesso
-  it("Deve ser possivel criar usuário ao informar todos os dados corretamente", () => {
+
+  it("Deve retornar 201 - Deve ser possivel criar usuário ao informar todos os dados corretamente", () => {
     cy.request({
       method: "POST",
       url: "http://localhost:8400/api/user/create",
@@ -37,7 +38,7 @@ describe("Criar usuário", () => {
     });
   });
 
-  it("Deve ser possivel criar usuário informando somente Nome, Email, Telefone, Data e Empresa", () => {
+  it("Deve retornar 201 - Deve ser possivel criar usuário informando somente Nome, Email, Telefone, Data e Empresa", () => {
     cy.request({
       method: "POST",
       url: "http://localhost:8400/api/user/create",
@@ -57,7 +58,7 @@ describe("Criar usuário", () => {
   });
 
 
-  it('Deve ser possivel criar usuário informando 2 empresas', ()=>{
+  it('Deve retornar 201 - Deve ser possivel criar usuário informando 2 empresas', ()=>{
     cy.request({
       method: "POST",
       url: "http://localhost:8400/api/user/create",
@@ -79,7 +80,7 @@ describe("Criar usuário", () => {
   })
 
   
-  it('Deve ser possivel criar usuário informando 3 empresas', ()=>{
+  it('Deve retornar 201 - Deve ser possivel criar usuário informando 3 empresas', ()=>{
     cy.request({
       method: "POST",
       url: "http://localhost:8400/api/user/create",
@@ -100,7 +101,7 @@ describe("Criar usuário", () => {
     });
   })
 
-  it("Não deve ser possivel criar usuário sem informar nome", () => {
+  it("Deve retornar 400 - Não deve ser possivel criar usuário sem informar nome", () => {
     cy.request({
       method: "POST",
       url: "http://localhost:8400/api/user/create",
@@ -120,7 +121,7 @@ describe("Criar usuário", () => {
     });
   });
 
-  it("Não deve ser possivel criar usuário sem informar email", () => {
+  it("Deve retornar 400 - Não deve ser possivel criar usuário sem informar email", () => {
     cy.request({
       method: "POST",
       url: "http://localhost:8400/api/user/create",
@@ -140,7 +141,7 @@ describe("Criar usuário", () => {
     });
   });
 
-  it("Não deve ser possivel criar usuário sem informar telefone", () => {
+  it("Deve retornar 400 - Não deve ser possivel criar usuário sem informar telefone", () => {
     cy.request({
       method: "POST",
       url: "http://localhost:8400/api/user/create",
@@ -160,7 +161,7 @@ describe("Criar usuário", () => {
     });
   });
 
-  it("Não deve ser possivel criar usuário sem informar data de nascimento", () => {
+  it("Deve retornar 400 - Não deve ser possivel criar usuário sem informar data de nascimento", () => {
     cy.request({
       method: "POST",
       url: "http://localhost:8400/api/user/create",
@@ -200,7 +201,7 @@ describe("Criar usuário", () => {
     });
   });
 
-  it("Não deve ser possivel criar usuário sem informar empresa", () => {
+  it("Deve retornar 400 - Não deve ser possivel criar usuário sem informar empresa", () => {
     cy.request({
       method: "POST",
       url: "http://localhost:8400/api/user/create",
@@ -220,7 +221,7 @@ describe("Criar usuário", () => {
     });
   });
 
-  it("Não deve ser possivel criar usuário sem informar os dados", () => {
+  it("Deve retornar 400 - Não deve ser possivel criar usuário sem informar os dados", () => {
     cy.request({
       method: "POST",
       url: "http://localhost:8400/api/user/create",
@@ -234,7 +235,7 @@ describe("Criar usuário", () => {
     });
   });
 
-  it("Não deve ser possivel criar usuário com nome inválido", () => {
+  it("Deve retornar 400 - Não deve ser possivel criar usuário com valores inválidos em nome", () => {
     let invalidNames = [ "     ", "12121", " ", "#{{}}}"];
 
     invalidNames.forEach((invalidname) => {
@@ -256,7 +257,7 @@ describe("Criar usuário", () => {
     });
   });
 
-  it("Não deve ser possivel criar usuário com email inválido", () => {
+  it("Deve retornar 400 - Não deve ser possivel criar usuário com valores inválidos em email", () => {
     let invalidEmails = [
       "12121",
       "#{{}}}",
@@ -285,7 +286,7 @@ describe("Criar usuário", () => {
     });
   });
 
-  it("Não deve ser possivel criar usuário com telefone inválido", () => {
+  it("Deve retornar 400 - Não deve ser possivel criar usuário com valores inválidos em telefone", () => {
     let invalidPhone = [
       
       "#{{}}}",
@@ -315,7 +316,7 @@ describe("Criar usuário", () => {
     });
   });
 
-  it("Não deve ser possivel criar usuário com cidade inválida", () => {
+  it("Deve retornar 400 - Não deve ser possivel criar usuário com valores inválidos em cidade", () => {
     let invalidCities = ["12121", "#{{}}}", "     ", " ", "p>,", "@", "ç~po"];
 
     invalidCities.forEach((invalidCity) => {
@@ -337,7 +338,7 @@ describe("Criar usuário", () => {
     });
   });
 
-    // o sistema é quebrado ao realizar esse teste pois a api está permitindo - comentado pois está travando de seguir outros testes - card de bug foi aberto
+    // o sistema para de funcionar ao realizar esse teste pois a api está permitindo - card de bug foi aberto
   // it('Não deve ser possivel criar usuário com data de nascimento inválida', ()=>{
   //   let invalidBirth = ["12121", "#{{}}}", "     ", " ", "juremagmailcom", "@", "ç~po"]
 
@@ -360,34 +361,36 @@ describe("Criar usuário", () => {
   //   })
   // })
 
-  // 
-  // it("Não deve ser possivel criar usuário com empresas inválidas", () => {
-  //   let invalidCompanies = [
-  //     ",",
-  //     "#{{}}}",
-  //     "     ",
-  //     " ",
-  //     "p>,",
-  //     "@",
-  //     "ç~po",
-  //   ];
+  
+  it("Deve retornar 400 - Não deve ser possivel criar usuário com valores inválidos em empresas", () => {
+    let invalidCompanies = [
+      ",",
+      "1",
+      "#{{}}}",
+      "     ",
+      " ",
+      "p>,",
+      "@",
+      "ç~po",
+    ];
 
-  //   invalidCompanies.forEach((invalidCompanie) => {
-  //     cy.request({
-  //       method: "POST",
-  //       url: "http://localhost:8400/api/user/create",
-  //       body: {
-  //         name: validUser.name,
-  //         email: validUser.email,
-  //         telephone: validUser.telephone,
-  //         birth_date: validUser.birth_date,
-  //         birth_city: validUser.birth_city,
-  //         companies: invalidCompanie,
-  //       },
-  //       failOnStatusCode: false,
-  //     }).then((response) => {
-  //       expect(response.status).to.equal(400);
-  //     });
-  //   });
-  // }); // retorno 500, verificar 
+    invalidCompanies.forEach((invalidCompanie) => {
+      cy.request({
+        method: "POST",
+        url: "http://localhost:8400/api/user/create",
+        body: {
+          name: validUser.name,
+          email: validUser.email,
+          telephone: validUser.telephone,
+          birth_date: validUser.birth_date,
+          birth_city: validUser.birth_city,
+          companies: invalidCompanie,
+        },
+        failOnStatusCode: false,
+      }).then((response) => {
+        expect(response.status).to.equal(400);
+      });
+    });
+  }); 
+
 });

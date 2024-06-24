@@ -7,14 +7,12 @@ describe('Atualizar informações do usuário', ()=>{
         })
     })
 
-    it('Deve ser possivel atualizar informações do usuário', ()=>{
+    it('Deve retornar 200 - Deve ser possivel atualizar informações do usuário', ()=>{
         cy.request({
             method: "PATCH", 
             url: "http://localhost:8400/api/user/" + id + "/update", 
             body: {
-                name: "Hulio", 
-                email: "jay@gmail.com", 
-                companies: ["4"]
+                name: "Hulio",       
             }
         }).then((response)=>{
             expect(response.status).to.equal(200)

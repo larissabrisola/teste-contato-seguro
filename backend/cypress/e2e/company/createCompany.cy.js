@@ -21,6 +21,7 @@ describe('Cadastro de empresa', ()=>{
         }
        }).then((response)=>{
             expect(response.status).to.equal(201)
+            // não possuo informação do response body para realizar mais validações 
        })
     })
 })
