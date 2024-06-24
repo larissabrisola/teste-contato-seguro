@@ -8,8 +8,8 @@ export default class CreateUserPage {
     inputEmpresas = 'input[placeholder="Empresas"]'
     liEmpresa1 = 'ul > li.option.highlightOption.highlight'
     liEmpresa2 = 'ul > li:nth-child(2)'
-    liEmpresa3 = 'ul > li:nth-child(3)'
-    btnSalvar = 'button type="submit"'
+    liEmpresa3 = 'ul > li.option.highlightOption.highlight' // ele se torna o primeiro quando os outros dois sao selecionados,  por isso é igual o 1 
+    btnSalvar = '.sc-eCImPb > button'
 
     typeName(name){
         cy.get(this.inputName).type(name)
@@ -40,7 +40,7 @@ export default class CreateUserPage {
     }
 
     clickBtnSalvar(){
-        cy.get(this.btnSalvar).click()
+        cy.get(this.btnSalvar).click({force: true})
     }
 
     clickEmpresa1(){
