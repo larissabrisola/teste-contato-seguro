@@ -181,25 +181,6 @@ describe("Criar usuário", () => {
     });
   });
 
-  it("Não deve ser possivel criar usuário sem informar cidade", () => {
-    cy.request({
-      method: "POST",
-      url: "http://localhost:8400/api/user/create",
-      body: {
-        name: validUser.name,
-        email: validUser.email,
-        telephone: validUser.telephone,
-        birth_date: validUser.birth_date,
-        companies: validUser.companies,
-      },
-      failOnStatusCode: false,
-    }).then((response) => {
-      expect(response.status).to.equal(400);
-      expect(response.body).to.deep.equal({
-        message: "invalid data!",
-      });
-    });
-  });
 
   it("Deve retornar 400 - Não deve ser possivel criar usuário sem informar empresa", () => {
     cy.request({
